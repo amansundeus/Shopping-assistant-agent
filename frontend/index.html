@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Shopping Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="signed-out">
+    <main class="app-shell">
+      <header class="top">
+        <div>
+          <h1>Shopping Assistant</h1>
+          <p class="subtitle">
+            Tell me what you want to buy. I'll compare prices and reviews across Indian stores and give you links.
+            You choose and pay yourself; I never ask for logins or payment details.
+          </p>
+        </div>
+        <div class="top-actions app-only">
+          <span id="status" class="status idle">Ready</span>
+          <button id="new-chat-btn" type="button" class="ghost">New chat</button>
+          <span id="user-name" class="user-name"></span>
+          <button id="sign-out-btn" type="button" class="ghost">Sign out</button>
+        </div>
+      </header>
+
+      <form id="sign-in-form" class="sign-in signed-out-only">
+        <h2>Sign in</h2>
+        <p>Enter the access key your admin gave you.</p>
+        <label for="access-key" class="visually-hidden">Access key</label>
+        <input id="access-key" type="password" autocomplete="current-password" placeholder="Access key" required />
+        <p id="sign-in-error" class="error" hidden></p>
+        <button type="submit" class="primary">Sign in</button>
+      </form>
+
+      <section id="thread" class="thread app-only" aria-live="polite">
+        <div id="examples" class="examples">
+          <p>Try one of these:</p>
+          <button type="button" class="chip">Best 5G phone under ₹20,000 with a good camera</button>
+          <button type="button" class="chip">Noise-cancelling earbuds under ₹5,000, mostly for calls</button>
+          <button type="button" class="chip">Air fryer for a family of 4, under ₹8,000</button>
+          <button type="button" class="chip">Running shoes for flat feet, under ₹6,000</button>
+        </div>
+      </section>
+
+      <form id="chat-form" class="composer app-only">
+        <label for="prompt" class="visually-hidden">Message</label>
+        <textarea
+          id="prompt"
+          name="prompt"
+          rows="2"
+          maxlength="5000"
+          placeholder="What do you want to buy? Add your budget and must-haves."
+          required
+        ></textarea>
+        <button id="send-btn" type="submit" class="primary">Send</button>
+      </form>
+    </main>
+
+    <script src="./vendor/marked.min.js"></script>
+    <script src="./vendor/purify.min.js"></script>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
